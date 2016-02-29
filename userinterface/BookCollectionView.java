@@ -212,7 +212,7 @@ public class BookCollectionView extends View
 			 		*/
 					//----------------------------------------------------------
        		     	clearErrorMessage();
-       		     	myModel.stateChangeRequest("CancelAccountList", null);
+       		     	myModel.stateChangeRequest("CancelBookList", null);
             	  }
         	});
 
@@ -238,13 +238,13 @@ public class BookCollectionView extends View
 	//--------------------------------------------------------------------------
 	protected void processAccountSelected()
 	{
-		AccountTableModel selectedItem = tableOfAccounts.getSelectionModel().getSelectedItem();
+		BookTableModel selectedItem = tableOfBooks.getSelectionModel().getSelectedItem();
 
 		if(selectedItem != null)
 		{
-			String selectedAcctNumber = selectedItem.getAccountNumber();
+			String selectedBookNumber = selectedItem.getBookId();
 
-			myModel.stateChangeRequest("AccountSelected", selectedAcctNumber);
+			myModel.stateChangeRequest("BookSelected", selectedBookNumber);
 		}
 	}
 
