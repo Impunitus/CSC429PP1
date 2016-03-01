@@ -23,7 +23,7 @@ import userinterface.MainStageContainer;
 public class Book extends EntityBase
 {
 	private static final String myTableName = "Book";
-	
+
 	protected Properties dependencies;
 
 	private String updateStatusMessage = "";
@@ -35,7 +35,7 @@ public class Book extends EntityBase
 	public Book(Librarian lib)
 	{
 		super(myTableName);
-		
+
 		myStage = MainStageContainer.getInstance();
 
 		myLibrarian = lib;
@@ -104,7 +104,7 @@ public class Book extends EntityBase
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	//-----------------------------------------------------------
 	public void setData(Properties props)
@@ -123,7 +123,7 @@ public class Book extends EntityBase
 			}
 		}
 	}
-	
+
 
 	private void setDependencies()
 	{
@@ -140,7 +140,7 @@ public class Book extends EntityBase
 
 		return aNum.compareTo(bNum);
 	}
-	
+
 	/**
 	 * Update Book information in the database
 	 */
@@ -251,7 +251,19 @@ public class Book extends EntityBase
 	//----------------------------------------------------------
 	public void createAndShowBookView()
 	{
-		
+
+	}
+	public Vector<String> getEntryListView()
+	{
+		Vector<String> v = new Vector<String>();
+
+		v.addElement(persistentState.getProperty("bookId"));
+		v.addElement(persistentState.getProperty("author"));
+		v.addElement(persistentState.getProperty("title"));
+		v.addElement(persistentState.getProperty("pubYear"));
+		v.addElement(persistentState.getProperty("status"));
+
+		return v;
 	}
 
 	//-----------------------------------------------------------

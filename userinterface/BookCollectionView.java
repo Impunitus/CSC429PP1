@@ -37,13 +37,13 @@ import java.util.Enumeration;
 
 // project imports
 import impresario.IModel;
-import model.Account;
-import model.AccountCollection;
+import model.Book;
+import model.BookCollection;
 
 //==============================================================================
 public class BookCollectionView extends View
 {
-	protected TableView<BookTableView> tableOfBooks;
+	protected TableView<BookTableModel> tableOfBooks;
 	protected Button cancelButton;
 	protected Button submitButton;
 
@@ -100,7 +100,7 @@ public class BookCollectionView extends View
 
 			}
 
-			tableOfAccounts.setItems(tableData);
+			tableOfBooks.setItems(tableData);
 		}
 		catch (Exception e) {//SQLException e) {
 			// Need to handle this exception
@@ -146,8 +146,8 @@ public class BookCollectionView extends View
 		tableOfBooks.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
 		TableColumn bookIDColumn = new TableColumn("Book ID") ;
-		bookNumberColumn.setMinWidth(100);
-		bookNumberColumn.setCellValueFactory(
+		bookIDColumn.setMinWidth(100);
+		bookIDColumn.setCellValueFactory(
 	                new PropertyValueFactory<BookTableModel, String>("bookId"));
 
 		TableColumn bookAuthorColumn = new TableColumn("Author") ;
@@ -170,8 +170,8 @@ public class BookCollectionView extends View
     statusColumn.setCellValueFactory(
                   new PropertyValueFactory<BookTableModel, String>("status"));
 
-		tableOfBooks.getColumns().addAll(bookIDColumn, bookAuthorColumn, titleColumn
-                                          pubYearColumn, statusColumn);
+		tableOfBooks.getColumns().addAll(bookIDColumn, bookAuthorColumn, titleColumn,
+                  pubYearColumn, statusColumn);
 
 		tableOfBooks.setOnMousePressed(new EventHandler<MouseEvent>() {
 			@Override
@@ -184,7 +184,7 @@ public class BookCollectionView extends View
 		});
 		ScrollPane scrollPane = new ScrollPane();
 		scrollPane.setPrefSize(115, 150);
-		scrollPane.setContent(tableOfAccounts);
+		scrollPane.setContent(tableOfBooks);
 
 		submitButton = new Button("Submit");
  		submitButton.setOnAction(new EventHandler<ActionEvent>() {
